@@ -1,8 +1,28 @@
 // METHOD GET
 
-// fetch('https://gorest.co.in/public/v2/users')
-//     .then(response => response.json())
-//     .then(data => console.log(data));
+fetch("https://gorest.co.in/public/v2/users")
+    .then((data) => {
+        // console.log(data);
+        return data.json();
+    }).then((objectData) => {
+        // console.log(objectData[0].name);
+        let tableData = "";
+        objectData.map((values) => {
+            tableData += `<tr>
+            <td>${values.id}</td>
+            <td>${values.name}</td>
+            <td>${values.email}</td>
+            <td><button type="button" class="" id="edition">Editar</button>
+                <button type="button" class="" id="deleted">Excluir</button>
+            </td>
+            </tr>`;
+        });
+
+        document.getElementById('table-body').innerHTML = tableData;
+    }).catch((err) => {
+        console.log(err);
+    });
+
 
 
 // METHOD POST
@@ -40,50 +60,12 @@
 
 // METHOD DELETE
 
-fetch('https://gorest.co.in/public/v2/users/3028?access-token=7e30ccd20624286382812be0ffb54616a89a208e70e3f09460a1710a6c4efec7', {
-    method: "DELETE"
-})
-    .then(response => response.json())
-    .then(data => console.log(data))
+// fetch('https://gorest.co.in/public/v2/users/3028?access-token=7e30ccd20624286382812be0ffb54616a89a208e70e3f09460a1710a6c4efec7', {
+//     method: "DELETE"
+// })
+//     .then(response => response.json())
+//     .then(data => console.log(data))
 
 
-// CRIANDO A LINHAS NA TABELA
-function createLine(data) {
-    line = document.createElement('tr');
-    tdID = document.createElement('td');
-    tdName = document.createElement('td');
-    tdEmail = document.createElement('td');
-    tdAction = document.createElement('td');
-
-    tdID.innerHTML = data.id;
-    tdName.innerHTML = data.name;
-    tdEmail.innerHTML = data.email;
-    tdAction.innerHTML = `<button type="button" class="" id="edition">Editar</button>
-                            <button type="button" class="" id="deleted">Excluir</button>`;
-
-    line.appendChild(tdID);
-    line.appendChild(tdName);
-    line.appendChild(tdEmail);
-    line.appendChild(tdAction);
-
-    return line;
-
-}
-
-
-// // FUNÇÃO PRINCIPAL
-// function main() {
-//     // const API_URL_GET = get("https://gorest.co.in/public/v2/users");
-//     // let dataAPI = JSON.parse(API_URL_GET);
-//     let table = document.getElementById('table');
-
-//     dataAPI.forEach(element => {
-//         let line = createLine(element);
-//         table.appendChild(line);
-//     });
-
-// }
-
-// // main();
 
 
