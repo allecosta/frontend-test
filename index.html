@@ -12,7 +12,7 @@
 <body>
     <main>
         <div class="main">
-            <button type="button" class="button blue" id="newRegisters">Novo Registro</button>
+            <button type="button" class="button blue" id="newRegister">Novo Registro</button>
             <table class="list-table" id="table">
                 <thead>
                     <tr>
@@ -27,6 +27,26 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- MODAL NOVO REGISTRO -->
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <span class="modal-close" id="modalClose">&#10006;</span>
+                </header>
+                <form method="POST" id="form" class="modal-form">
+                    <input type="text" id="name" data-index="new" class="modal-field" placeholder="Nome" required>
+                    <input type="email" id="email" class="modal-field" placeholder="E-mail" required>
+                    <input type="text" id="gender" class="modal-field" placeholder="Genero" required>
+                    <input type="text" id="status" class="modal-field" placeholder="Status" required>
+                </form>
+                <footer class="modal-footer">
+                    <button id="salvar" class="button green" onclick="fetchPost();">Salvar</button>
+                    <button id="cancelar" class="button blue">Cancelar</button>
+                </footer>
+            </div>
+        </div>
+
     </main>
 
     <script src="js/script.js"></script>
