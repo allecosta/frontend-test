@@ -12,8 +12,9 @@ fetch("https://gorest.co.in/public/v2/users")
             <td>${values.id}</td>
             <td>${values.name}</td>
             <td>${values.email}</td>
-            <td><button type="button" class="" id="edition">Editar</button>
-                <button type="button" class="" id="deleted">Excluir</button>
+            <td>
+                <button type="button" class="button green" onclick="fetchPut();">Editar</button>
+                <button type="button" class="button red" onclick="fetchDelete();">Excluir</button>
             </td>
             </tr>`;
         });
@@ -25,46 +26,54 @@ fetch("https://gorest.co.in/public/v2/users")
 
 
 
-// METHOD POST
+// // METHOD POST
+function fetchPost() {
+    fetch('https://gorest.co.in/public/v2/users?access-token=7e30ccd20624286382812be0ffb54616a89a208e70e3f09460a1710a6c4efec7', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+            name: "test500",
+            email: "test500@hostmail.com",
+            gender: "female",
+            status: "active"
+        })
+    })
+        .then(response => response.json())
+        .then(data => console.log(data))
 
-// fetch('https://gorest.co.in/public/v2/users?access-token=7e30ccd20624286382812be0ffb54616a89a208e70e3f09460a1710a6c4efec7', {
-//     method: 'POST',
-//     headers: { 'content-type': 'application/json' },
-//     body: JSON.stringify({
-//         name: "test",
-//         email: "test@hostmail.com",
-//         gender: "male",
-//         status: "active"
-//     })
-// })
-//     .then(response => response.json())
-//     .then(data => console.log(data))
+}
 
 
 // METHOD PUT
 
-// fetch('https://gorest.co.in/public/v2/users/3023?access-token=7e30ccd20624286382812be0ffb54616a89a208e70e3f09460a1710a6c4efec7', {
-//     method: 'PUT',
-//     headers: { 'content-type': 'application/json' },
-//     body: JSON.stringify({
-//         name: "test88",
-//         email: "test@hostmail.uk",
-//         gender: "male",
-//         status: "active"
-//     })
-// })
-//     .then(response => response.json())
-//     .then(data => console.log(data))
+function fetchPut() {
+    fetch('https://gorest.co.in/public/v2/users/4232?access-token=7e30ccd20624286382812be0ffb54616a89a208e70e3f09460a1710a6c4efec7', {
+        method: 'PUT',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+            name: "test88",
+            email: "test@hostmail.uk",
+            gender: "male",
+            status: "active"
+        })
+    })
+        .then(response => response.json())
+        .then(data => console.log(data))
+
+}
 
 
 
 // METHOD DELETE
 
-// fetch('https://gorest.co.in/public/v2/users/3028?access-token=7e30ccd20624286382812be0ffb54616a89a208e70e3f09460a1710a6c4efec7', {
-//     method: "DELETE"
-// })
-//     .then(response => response.json())
-//     .then(data => console.log(data))
+function fetchDelete() {
+    fetch('https://gorest.co.in/public/v2/users/3028?access-token=7e30ccd20624286382812be0ffb54616a89a208e70e3f09460a1710a6c4efec7', {
+        method: "DELETE"
+    })
+        .then(response => response.json())
+        .then(data => console.log(data))
+
+}
 
 
 
