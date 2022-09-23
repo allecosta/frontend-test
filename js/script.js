@@ -47,14 +47,14 @@ function fetchPost() {
 // METHOD PUT
 
 function fetchPut() {
-    fetch('https://gorest.co.in/public/v2/users/4232?access-token=7e30ccd20624286382812be0ffb54616a89a208e70e3f09460a1710a6c4efec7', {
+    fetch('https://gorest.co.in/public/v2/users/3705?access-token=7e30ccd20624286382812be0ffb54616a89a208e70e3f09460a1710a6c4efec7', {
         method: 'PUT',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
-            name: "test88",
-            email: "test@hostmail.uk",
+            name: "test700",
+            email: "test700@hostmail.uk",
             gender: "male",
-            status: "active"
+            status: "inactive"
         })
     })
         .then(response => response.json())
@@ -63,18 +63,45 @@ function fetchPut() {
 }
 
 
-
 // METHOD DELETE
 
 function fetchDelete() {
-    fetch('https://gorest.co.in/public/v2/users/3028?access-token=7e30ccd20624286382812be0ffb54616a89a208e70e3f09460a1710a6c4efec7', {
+    fetch('https://gorest.co.in/public/v2/users/3705?access-token=7e30ccd20624286382812be0ffb54616a89a208e70e3f09460a1710a6c4efec7', {
         method: "DELETE"
     })
-        .then(response => response.json())
         .then(data => console.log(data))
 
 }
 
+
+// MODAL
+
+const openModal = () => document.getElementById('modal').classList.add('active')
+
+const closeModal = () => {
+    clearFields()
+    document.getElementById('modal').classList.remove('active')
+}
+
+
+//Interação com o layout
+
+const clearFields = () => {
+    const fields = document.querySelectorAll('.modal-field')
+    fields.forEach(field => field.value = "")
+    document.getElementById('name').dataset.index = 'new'
+}
+
+
+// Eventos
+document.getElementById('newRegister')
+    .addEventListener('click', openModal)
+
+document.getElementById('modalClose')
+    .addEventListener('click', closeModal)
+
+document.getElementById('cancelar')
+    .addEventListener('click', closeModal)
 
 
 
